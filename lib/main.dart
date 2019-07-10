@@ -27,8 +27,10 @@ class _DicePageState extends State<DicePage> {
   int rightDiceNumber = 1;
 
   void roll() {
-    leftDiceNumber = Random().nextInt(6) + 1;
-    rightDiceNumber = Random().nextInt(6) + 1;
+    setState(() {
+      leftDiceNumber = Random().nextInt(6) + 1;
+      rightDiceNumber = Random().nextInt(6) + 1;
+    });
   }
 
   @override
@@ -39,9 +41,7 @@ class _DicePageState extends State<DicePage> {
           Expanded(
             child: FlatButton(
               onPressed: () {
-                setState(() {
-                  roll();
-                });
+                roll();
               },
               child: Image.asset('images/dice$leftDiceNumber.png'),
             ),
@@ -49,9 +49,7 @@ class _DicePageState extends State<DicePage> {
           Expanded(
             child: FlatButton(
               onPressed: () {
-                setState(() {
-                  roll();
-                });
+                roll();
               },
               child: Image.asset('images/dice$rightDiceNumber.png'),
             ),
